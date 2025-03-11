@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Metrics Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-gray-100 p-6">
+    <div class="container mx-auto">
+        <h1 class="text-2xl font-bold mb-4">Financial Metrics Dashboard</h1>
+        
+        <!-- Risk Metrics Section -->
+        <div class="bg-white shadow-md rounded-lg p-6 mb-6">
+            <h2 class="text-xl font-semibold mb-4">Risk Metrics</h2>
+            <ul class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                <li class="p-4 bg-gray-200 rounded">Expected Shortfall (Conditional VaR): <span id="var">-</span></li>
+                <li class="p-4 bg-gray-200 rounded">Sharpe Ratio: <span id="sharpe">-</span></li>
+                <li class="p-4 bg-gray-200 rounded">Sortino Ratio: <span id="sortino">-</span></li>
+                <li class="p-4 bg-gray-200 rounded">Maximum Drawdown: <span id="mdd">-</span></li>
+                <li class="p-4 bg-gray-200 rounded">Beta: <span id="beta">-</span></li>
+                <li class="p-4 bg-gray-200 rounded">Alpha: <span id="alpha">-</span></li>
+            </ul>
+        </div>
+        
+        <!-- Performance Metrics Section -->
+        <div class="bg-white shadow-md rounded-lg p-6 mb-6">
+            <h2 class="text-xl font-semibold mb-4">Performance Metrics</h2>
+            <canvas id="performanceChart" class="w-full h-64"></canvas>
+        </div>
+
+        <!-- Liquidity & Efficiency Metrics -->
+        <div class="bg-white shadow-md rounded-lg p-6 mb-6">
+            <h2 class="text-xl font-semibold mb-4">Liquidity & Efficiency Metrics</h2>
+            <canvas id="liquidityChart" class="w-full h-64"></canvas>
+        </div>
+    </div>
+
+    <script>
+        // Sample Data for Charts
+        const performanceData = {
+            labels: ['CAGR', 'Treynor Ratio', 'Information Ratio', 'Hit Ratio', 'R-squared'],
+            datasets: [{
+                label: 'Performance Metrics',
+                data: [8, 1.2, 0.8, 65, 0.9],
+                backgroundColor: 'rgba(54, 162, 235, 0.6)'
+            }]
+        };
+        
+        const liquidityData = {
+            labels: ['Turnover Ratio', 'Bid-Ask Spread', 'Market Impact Cost'],
+            datasets: [{
+                label: 'Liquidity Metrics',
+                data: [45, 0.02, 0.5],
+                backgroundColor: 'rgba(255, 99, 132, 0.6)'
+            }]
+        };
+
+        // Render Charts
+        new Chart(document.getElementById('performanceChart'), { type: 'bar', data: performanceData });
+        new Chart(document.getElementById('liquidityChart'), { type: 'bar', data: liquidityData });
+    </script>
+</body>
+</html>
