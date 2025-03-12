@@ -1,6 +1,6 @@
 # custtom ignore
 dummy.txt
-
+backup/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
